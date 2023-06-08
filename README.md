@@ -145,4 +145,4 @@ I would like to thank microverse for their resources.
 
 ## 📝 License <a name="license"></a>
 
-This project is [MIT licensed](./LICENSE.txt).
+This project is [MIT licensed](./LICENSE).
