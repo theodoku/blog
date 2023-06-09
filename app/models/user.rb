@@ -5,6 +5,10 @@ class User < ApplicationRecord
 
   before_save :update_posts_count
 
+  validates :name, :photo, :bio, presence: true
+  validates :posts_counter, numericality: { greater_than_or_equal_to: 0 }
+  attr_accessor :photo, :bio, :email
+
   def recent_posts(limit = 3)
     posts.order(created_at: :desc).limit(limit)
   end
