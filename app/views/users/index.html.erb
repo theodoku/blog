@@ -1,1 +1,22 @@
-<p>List of all Users</p>
+<!-- Heading -->
+<h1 class="Head">Here is a list of all users</h1>
+
+<section class='section-container'>
+  <% @users.each do |user| %>
+    <div class='user'>
+      <!-- Profile photo or default image -->
+      <% if user.photo&.attached? %>
+      <%= image_tag(user.photo.url, class: "profile-photo") %>
+    <% else %>
+      <%= image_tag('img-1.jpg', class: "profile-photo") %>
+    <% end %>
+      <div class='profile_desc'>
+        <h2 class='name'><%= user.name %></h2>
+        <div class='post_link'>
+          <p>Number of posts: <%= user.posts_counter %></p>
+          <%= button_to "See all posts", user_path(user), method: :get, class: "see-posts-btn" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</section>

@@ -1,1 +1,69 @@
-<p>List of all Posts</p>
+<!-- Heading -->
+<h1 class="Head">Shows the details of posts for a given user</h1>
+
+<!-- User details section -->
+<section class='section-container'>
+  <div class='user'>
+    <!-- Profile photo -->
+    <div class='profile-div'>
+    <% if @user && @user.photo %>
+        <div class='profile-photo'><%= @user.photo %></div>
+    <% else %>
+        <div class='profile-photo'><%= image_tag('img-1.jpg', class: "profile-photo") %></div>
+    <% end %>
+    </div>
+    <!-- User name and post count -->
+    <div class='user_name'>
+      <% if @user %>
+        <h2><%= @user.name %></h2>
+        <div class='post_nums'>
+          <p class="post_count">Number of posts: <%= @user.posts_counter %></p>
+        </div>
+      <% else %>
+        <p>No user found.</p>
+      <% end %>
+    </div>
+    
+  <!-- Recent posts section -->
+  <section class="posts_container">
+    <% if @recent_posts.present? %>
+      <% @recent_posts.each_with_index do |post, index| %>
+        <div class="post">
+          <h3>Post #<%= index+1 %></h3>
+          <p class="post_text"><%= post.text %></p>
+          <p class="comments_likes">
+            Comments: <%= post.comments_counter %>,
+            Likes: <%= post.likes_counter %>
+          </p>
+        </div>
+      <% end %>
+    <% else %>
+      <p class='no-recent'> No recent posts.</p>
+    <% end %>
+  </section>
+
+  <!-- Comments section -->
+  <div class="post">
+    <h4>Comments:</h4>
+    <% if @post_comments %>
+        <ul>
+        <% @post_comments.each do |comment| %>
+            <% if comment.post_id === post.id %>
+            <li><%= comment.user.name %>: <%= comment.text %></li>
+            <% end %>
+        <% end %>
+        </ul>
+    <% else %>
+        <p>No comments found.</p>
+    <% end %>
+   </div>
+
+  <br>
+  
+  <!-- Next button -->
+  <button class="all_posts">
+    Next
+  </button>
+</div>
+</section>
+

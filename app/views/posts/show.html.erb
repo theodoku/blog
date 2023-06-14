@@ -1,1 +1,38 @@
-<p>Details of Posts</p>
+<!-- Heading -->
+<h1 class="Head">Shows the details of posts for a given user</h1>
+
+<section class="posts_container">
+  <% if @post %>
+    <!-- Post details -->
+    <div class='post'>
+      <div class=top-post>
+        <h2><%= @post.title %> by <%= @post.author.name %></h2>
+        <p class="top_comments_likes">
+          Comments: <%= @post.comments_counter %>,
+          Likes: <%= @post.likes_counter %>
+        </p>
+      </div>
+      <div>
+        <p class="post_text"><%= @post.text %></p>
+      </div>
+    </div>
+  <% else %>
+    <!-- No recent posts message -->
+    <p>No recent posts.</p>
+  <% end %>
+</section>
+
+<section class='comments-area'>
+<% if @post_comments && @post_comments.any? %>
+<div class="comments">
+  <h4>Comments:</h4>
+  <ul>
+    <% @post_comments.each do |comment| %>
+      <li><%= comment.user.name %>: <%= comment.text %></li>
+    <% end %>
+  </ul>
+</div>
+<% else %>
+<p>No comments found.</p>
+<% end %>
+</section>
