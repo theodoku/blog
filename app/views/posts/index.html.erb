@@ -26,8 +26,8 @@
     
   <!-- Recent posts section -->
   <section class="posts_container">
-    <% if @recent_posts.present? %>
-      <% @recent_posts.each_with_index do |post, index| %>
+    <% if @user.recent_posts.present? %>
+      <% @user.recent_posts.each_with_index do |post, index| %>
         <div class="post">
           <h3>Post #<%= index+1 %></h3>
           <p class="post_text"><%= post.text %></p>
@@ -45,18 +45,16 @@
   <!-- Comments section -->
   <div class="post">
     <h4>Comments:</h4>
-    <% if @post_comments %>
-        <ul>
-        <% @post_comments.each do |comment| %>
-            <% if comment.post_id === post.id %>
-            <li><%= comment.user.name %>: <%= comment.text %></li>
-            <% end %>
+    <% if @post.comments.present? %>
+      <ul>
+        <% @post.comments.each do |comment| %>
+          <li><%= comment.user.name %>: <%= comment.text %></li>
         <% end %>
-        </ul>
+      </ul>
     <% else %>
-        <p>No comments found.</p>
+      <p>No comments found.</p>
     <% end %>
-   </div>
+  </div>
 
   <br>
   
