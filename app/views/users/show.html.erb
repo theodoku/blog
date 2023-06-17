@@ -1,46 +1,45 @@
-<h1 class="Head">Shows the details of selected user</h1>
+<h1>These are the details of our unique user, <%= @user.name %></h1>
 
-<section class='section-container'>
-  <div class='user'>
-    <div class='profile-div'>
-      <div class='profile-photo'>
-      <%= image_tag(@user.photo.url, class: 'profile-photo') if @user.photo %>
+<section class="section-container">
+  <div class="d-flex align-items-center mb-3 gap-3">
+    <div class="profile-div">
+      <div class="border p-5 border-5">
+        <%= image_tag(@user.photo.url, class: 'profile-photo') if @user.photo %>
       </div>
     </div>
-    <div class='profile_name'>
-      <h2 class='name'><%= @user.name %></h2>
-      <div class='post_link'>
-        <p>Number of posts: <%= @user.posts_counter %></p>
+    <div class="border border-5 w-100 p-3">
+      <h2 class="name"><%= @user.name %></h2>
+      <div class="d-flex justify-content-end">
+        <p>Number of posts: <%= @user.posts_count %></p>
       </div>
     </div>
   </div>
 
   <div class="Bio">
-    <div class="Bio_box">
-      <h3>Bio :</h3>
+    <div class="border border-5 mx-auto w-100 p-3 mb-3">
+      <h3>Bio:</h3>
       <p><%= @user.bio %></p>
     </div>
   </div>
 
-  <section class="posts_container">
+  <section class="posts-container">
     <% if @recent_posts.present? %>
-    <% @recent_posts.each_with_index do |post, index| %>
-        <div class="post">
-        <h3>Post #<%= index+1 %></h3>
-        <p class="post_text"><%= post.text %></p>
-        <p class="comments_likes">
+      <% @recent_posts.each_with_index do |post, index| %>
+        <div class="border border-5 mx-auto w-100 p-3 mb-3">
+          <h3>Post #<%= index+1 %></h3>
+          <p class="post-text"><%= post.text %></p>
+          <p class="d-flex justify-content-end">
             Comments: <%= post.comments_counter %>,
             Likes: <%= post.likes_counter %>
-        </p>
+          </p>
         </div>
-    <% end %>
+      <% end %>
     <% else %>
-    <p>No recent posts.</p>
+      <p>No recent posts.</p>
     <% end %>
 
-    <%= button_to user_post_path(@user), class: 'pagination-btn' do %>
+    <%= button_to user_post_path(@user), method: :get, class: "btn btn-primary rounded-pill" do %>
       Pagination
     <% end %>
   </section>
 </section>
-

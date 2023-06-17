@@ -1,22 +1,26 @@
 <!-- Heading -->
-<h1 class="Head">Here is a list of all users</h1>
+<h1 class="text-center mb-3">Here are all our unique Users 😎</h1>
 
-<section class='section-container'>
-  <% @users.each do |user| %>
-    <div class='user'>
-      <!-- Profile photo or default image -->
-      <% if user.photo&.attached? %>
-      <%= image_tag(user.photo.url, class: "profile-photo") %>
-    <% else %>
-      <%= image_tag('img-1.jpg', class: "profile-photo") %>
-    <% end %>
-      <div class='profile_desc'>
-        <h2 class='name'><%= user.name %></h2>
-        <div class='post_link'>
-          <p>Number of posts: <%= user.posts_counter %></p>
-          <%= button_to "See all posts", user_path(user), method: :get, class: "see-posts-btn" %>
+<section class="w-100">
+  <div class="row">
+    <% @users.each do |user| %>
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card">
+          <!-- Profile photo or default image -->
+          <% if user.photo&.attached? %>
+            <%= image_tag(user.photo.url, class: "card-img-top border p-5") %>
+          <% else %>
+            <%= image_tag('img-1.jpg', class: "card-img-top border p-5") %>
+          <% end %>
+          <div class="card-body">
+            <h2 class="card-title"><%= user.name %></h2>
+            <p class="card-text">Number of posts: <%= user.posts_count %></p>
+            <div class="text-end">
+              <%= button_to "See all posts", user_path(user), method: :get, class: "btn btn-primary see-posts-btn" %>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </section>
