@@ -7,7 +7,7 @@
       <% if @user.photo&.attached? %>
         <%= image_tag(@user.photo.url, class: 'profile-photo rounded-circle') %>
       <% else %>
-        <%= image_tag('img-1.jpg', class: 'profile-photo rounded-circle') %>
+        <%= image_tag('img-1.jpg', class: 'profile-photo rounded-circle img-fluid') %>
       <% end %>
    </div>
     </div>
