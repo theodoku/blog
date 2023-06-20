@@ -1,4 +1,5 @@
 require 'rails_helper'
+
 RSpec.describe 'posts index', type: :system do
   describe 'The content of index page' do
     it 'shows the usernames' do
