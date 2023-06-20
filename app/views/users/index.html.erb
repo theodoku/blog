@@ -10,7 +10,7 @@
           <% if user.photo&.attached? %>
             <%= image_tag(user.photo.url, class: "card-img-top border p-5") %>
           <% else %>
-            <%= image_tag('img-1.jpg', class: "card-img-top border p-5") %>
+            <%= image_tag('img-1.jpg', class: "card-img-top border p-5 img-fluid") %>
           <% end %>
           <div class="card-body">
             <h2 class="card-title"><%= user.name %></h2>

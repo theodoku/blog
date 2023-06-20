@@ -12,7 +12,7 @@
         </div>
       <% else %>
         <div class="border border-5 w-100 p-3">
-          <%= image_tag('img-1.jpg', class: "profile-photo") %>
+          <%= image_tag('img-1.jpg', class: "profile-photo img-fluid") %>
         </div>
       <% end %>
     </div>
@@ -31,10 +31,10 @@
 
   <!-- Recent posts section -->
   <section>
-    <% if @user.recent_posts.present? %>
-      <% @user.recent_posts.each_with_index do |post, index| %>
+    <% if @posts.present? %>
+      <% @posts.each do |post| %>
         <div class="border border-5 p-3 mb-3">
-          <h3>Post #<%= index+1 %></h3>
+          <h3>Post #<%= post.id %></h3>
           <p class="post-text"><%= post.text %></p>
           <p class="d-flex justify-content-end">
             Comments: <%= post.comments_counter %>,
