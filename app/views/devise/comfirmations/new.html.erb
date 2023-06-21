@@ -1,0 +1,17 @@
+<section>
+  <div class="container">
+    <h2 class="h3">Resend Confirmation Instructions</h2>
+    <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+      <div class="mb-3">
+        <%= f.label :email, class: "form-label" %>
+        <%= f.email_field :email, required: true, autofocus: true, autocomplete: "email", class: "form-control", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
+      </div>
+      <div class="mb-3">
+        <%= f.submit "Resend Confirmation Instructions", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+    <div class="text-center">
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
+</section>

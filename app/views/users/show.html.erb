@@ -4,11 +4,7 @@
   <div class="d-flex align-items-center mb-3 gap-3">
     <div class="profile-div">
     <div class="border p-5 border-5">
-      <% if @user.photo&.attached? %>
-        <%= image_tag(@user.photo.url, class: 'profile-photo rounded-circle') %>
-      <% else %>
         <%= image_tag('img-1.jpg', class: 'profile-photo rounded-circle img-fluid') %>
-      <% end %>
    </div>
     </div>
     <div class="border border-5 w-100 p-3">

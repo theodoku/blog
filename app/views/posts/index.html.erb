@@ -6,15 +6,9 @@
   <div class="d-flex align-items-center mb-3 gap-3">
     <!-- Profile photo -->
     <div class="profile-div">
-      <% if @user && @user.photo %>
-        <div class="border p-5 border-5">
-          <%= @user.photo %>
-        </div>
-      <% else %>
         <div class="border border-5 w-100 p-3">
           <%= image_tag('img-1.jpg', class: "profile-photo img-fluid") %>
         </div>
-      <% end %>
     </div>
     <!-- User name and post count -->
     <div class="d-flex flex-column">

@@ -7,11 +7,7 @@
       <div class="col-lg-4 col-md-6 mb-4">
         <div class="card">
           <!-- Profile photo or default image -->
-          <% if user.photo&.attached? %>
-            <%= image_tag(user.photo.url, class: "card-img-top border p-5") %>
-          <% else %>
             <%= image_tag('img-1.jpg', class: "card-img-top border p-5 img-fluid") %>
-          <% end %>
           <div class="card-body">
             <h2 class="card-title"><%= user.name %></h2>
             <p class="card-text">Number of posts: <%= user.posts_count %></p>
