@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
-  devise_for :users
   root "users#index"
+  
+  devise_for :users
+
   resources :users, only: [:index, :show] do
-    resources :posts, only: [:index, :show, :create, :new] do
+    resources :posts, only: [:index, :show, :create, :new, :destroy] do
       resources :comments, only: [:new, :create]
-        resources :likes, only: [:create]
+      resources :likes, only: [:create]
     end
   end
 end
